@@ -26,4 +26,4 @@ class Comment(BaseModel):
     importance: Optional[Importance] = Importance.notImportant
     category: Optional[Category] = Category.other
     status: Optional[Status] = Status.open
-    tag: Optional[UUID] = None #context for where the comment is
+    Context: Optional[UUID] = None #context for where the comment is
