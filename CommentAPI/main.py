@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from models import Comment, Importance, Category, Status
 from uuid import UUID, uuid4
 
@@ -46,4 +46,16 @@ def add_comment(comment: Comment):
     db.append(comment)
     return comment
 
+
+@app.delete("/api/v1/comments/{comment_id}")
+def delete_comment(comment_id: UUID):
+    #potentially have an authorization step here
+    for comment in db:
+        if comment.commentID == comment_id:
+            db.remove(comment)
+            return
+    raise HTTPException(
+        status_code = 404,
+        detail=f"Comment with the id: {comment_id} does not exist."
+    )
 
