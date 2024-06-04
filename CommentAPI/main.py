@@ -10,7 +10,7 @@ db: List[Comment] = [
     Comment(
         commentID=uuid4(),
         parentCommentID=None,
-        childrenCommentIDs=List[None],
+        childrenCommentIDs=None,
         comment="This is a test comment",
         author="james.chong@aetna.com",
         datetime="June 6th 2024",
