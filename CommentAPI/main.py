@@ -38,3 +38,12 @@ db: List[Comment] = [
 @app.get("/api/v1/comments")
 def fetch_comments():
     return db
+
+
+@app.post("/api/v1/comments")
+def add_comment(comment: Comment):
+    #comment infomration should be in the body of Post Request
+    db.append(comment)
+    return comment
+
+
