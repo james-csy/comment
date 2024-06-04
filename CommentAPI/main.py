@@ -46,13 +46,18 @@ def add_comment(comment: Comment):
     db.append(comment)
     return comment
 
-
 @app.delete("/api/v1/comments/{comment_id}")
 def delete_comment(comment_id: UUID):
     #potentially have an authorization step here
     for comment in db:
         if comment.commentID == comment_id:
             db.remove(comment)
+            #deleted nested comments
+            children = comment.childrenCommentIDs
+            while children:
+                children = None
+                #Use BFS to visit all children comments and delete them
+                pass
             return
     raise HTTPException(
         status_code = 404,
