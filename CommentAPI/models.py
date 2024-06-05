@@ -22,8 +22,14 @@ class Comment(BaseModel):
     comment: str
     author: str
     datetime: str
+    #created time and edited time
     tags: List[str]
     importance: Optional[Importance] = Importance.notImportant
     category: Optional[Category] = Category.other
     status: Optional[Status] = Status.open
     Context: Optional[UUID] = None #context for where the comment is
+
+class CommentUpdates(BaseModel):
+    importance: Optional[Importance] = None
+    category: Optional[Category] = None
+    status: Optional[Status] = None
