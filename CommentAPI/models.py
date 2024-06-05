@@ -3,6 +3,8 @@ from typing import Optional, List
 from uuid import UUID, uuid4
 from enum import Enum
 
+#changing models from pydantic to sqlmodel
+
 class Importance(str, Enum):
     notImportant = "Not Important"
     important = "Important"
