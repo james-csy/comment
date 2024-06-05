@@ -56,6 +56,7 @@ def delete_comment(comment_id: UUID):
 
 @app.put("/api/v1/comments/{comment_id}")
 def update_comment(comment_id:UUID, comment_updates: CommentUpdates):
+    #potentially have an authorization step here
     for comment in db:
         if comment_updates.importance is not None:
             comment.importance = comment_updates.importance
